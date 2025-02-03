@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html:has(.ds-layout),
+body:has(.ds-layout) {
+  height: 100%;
+}
+
+.ds-layout {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  height: 100%;
+}
+
+.ds-layout__main {
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.ds-layout__aside {
+  min-width: calc(240px + 4em);
+  background-color: #f4f4f4;
+  font-size: 16px;
+  padding: 3em 2em;
+}
+
+.ds-menu__item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ds-submenu {
+  margin-left: 1em;
+}
+
+.ds-submenu__a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ds-submenu__title {
+  margin-left: 0.3em;
+}
