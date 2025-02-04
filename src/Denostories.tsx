@@ -1,42 +1,20 @@
 import type { FunctionComponent } from "preact";
-import { expandGlob, kebabCase, path, sentenceCase } from "./deps.ts";
-
 import { Layout } from "./components/Layout.tsx";
+import { buildGroups } from "./buildGroups.tsx";
+import { RouteContext } from "$fresh/server.ts";
 
-import type { StoryGroup } from "./types.ts";
+export default async function Denostories(req: Request, ctx: RouteContext) {
+  const groups = await buildGroups();
 
-export default async function Denostories() {
-  let groups: StoryGroup[] = [];
+  const slugs = ctx.params.slug.split("/");
+  const groupSlug = slugs[0] || "";
+  const storySlug = slugs[1] || "";
 
-  for await (const file of expandGlob("**/*.stories.tsx")) {
-    if (!file.isFile) continue;
+  const group = groups.find((g) => g.slug === groupSlug) || groups[0];
+  const story = group.stories.find((s) => s.slug === storySlug) ||
+    group.stories[0];
 
-    const content = await import(`file://${file.path}`) as Record<
-      string,
-      FunctionComponent
-    >;
-
-    const stories = Object.keys(content).map((key) => {
-      const _key = key as keyof typeof content;
-
-      return {
-        title: sentenceCase(_key),
-        slug: kebabCase(_key),
-        Component: content[_key],
-      };
-    });
-
-    const base = path.basename(file.name, ".stories.tsx");
-
-    groups = [...groups, {
-      title: sentenceCase(base),
-      slug: kebabCase(base),
-      stories,
-    }];
-  }
-
-  const Component: FunctionComponent | undefined = groups[0]?.stories[0]
-    ?.Component;
+  const Component: FunctionComponent | undefined = story.Component;
 
   return (
     <Layout groups={groups}>

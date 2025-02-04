@@ -7,6 +7,10 @@ body:has(.ds-layout) {
   height: 100%;
 }
 
+/*
+* Layout
+*/
+
 .ds-layout {
   display: flex;
   flex-direction: row;
@@ -26,22 +30,69 @@ body:has(.ds-layout) {
   padding: 3em 2em;
 }
 
-.ds-menu__item {
+/**
+** Search
+*/
+
+.ds-search {
+  position: relative;
+  margin-bottom: 2em;
+}
+
+.ds-search__icon {
+  position: absolute;
+  top: 0.2em;
+  left: 0.3em;
+}
+
+.ds-search__input {
+  padding: 0.2em 0.3em 0.2em 2em;
+  outline-color: #276ef1;
+}
+
+/**
+** GroupMenu
+*/
+
+.ds-groupmenu__title {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.ds-submenu {
+.ds-groupmenu__indicator {
+  transition: ease-in-out 0.1s transform;
+}
+
+.ds-groupmenu__title[aria-pressed="true"] > .ds-groupmenu__indicator {
+  transform: rotate(90deg);
+}
+
+/**
+** StoryMenu
+*/
+
+.ds-storymenu {
   margin-left: 1em;
+  display: none;
 }
 
-.ds-submenu__a {
+.ds-storymenu[aria-expanded="true"] {
+  display: block;
+}
+
+.ds-groupmenu__title[aria-pressed="true"] .ds-storymenu__a {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.ds-submenu__title {
+.ds-storymenu__a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ds-storymenu__title {
   margin-left: 0.3em;
 }

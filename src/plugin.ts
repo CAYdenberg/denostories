@@ -3,6 +3,7 @@ import { path } from "./deps.ts";
 import Denostories from "./Denostories.tsx";
 
 import type { Plugin } from "$fresh/server.ts";
+import { buildGroups } from "./buildGroups.tsx";
 
 interface Options {
   enabled: boolean;
@@ -19,6 +20,8 @@ const contents = Deno.readFileSync(
 const cssText = decoder.decode(contents);
 
 export default function denostories(options?: Partial<Options>): Plugin {
+  buildGroups(true);
+
   const {
     enabled,
   } = {
@@ -30,9 +33,15 @@ export default function denostories(options?: Partial<Options>): Plugin {
     name: "denostories",
     routes: enabled
       ? [
-        { path: "stories", component: Denostories },
+        { path: "stories/[...slug]", component: Denostories },
       ]
       : undefined,
+    islands: {
+      baseLocation: import.meta.url,
+      paths: [
+        "./components/Menu.tsx",
+      ],
+    },
     render: (ctx) => {
       ctx.render();
 
