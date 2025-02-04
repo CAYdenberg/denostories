@@ -1,10 +1,15 @@
-import type { FunctionComponent } from "preact";
-import { Layout } from "./components/Layout.tsx";
-import { buildGroups } from "./buildGroups.tsx";
 import { RouteContext } from "$fresh/server.ts";
 
-export default async function Denostories(req: Request, ctx: RouteContext) {
-  const groups = await buildGroups();
+import { Layout } from "./components/Layout.tsx";
+import { buildGroups } from "./buildGroups.tsx";
+import { getConfig } from "./config.ts";
+
+import type { FunctionComponent } from "preact";
+
+export default async function Denostories(_: Request, ctx: RouteContext) {
+  const config = getConfig();
+
+  const groups = await buildGroups(config);
 
   const slugs = ctx.params.slug.split("/");
   const groupSlug = slugs[0] || "";
@@ -17,7 +22,7 @@ export default async function Denostories(req: Request, ctx: RouteContext) {
   const Component: FunctionComponent | undefined = story.Component;
 
   return (
-    <Layout groups={groups}>
+    <Layout groups={groups} topRoute={config.route}>
       <Component />
     </Layout>
   );

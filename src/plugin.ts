@@ -1,17 +1,10 @@
 import { path } from "./deps.ts";
 
 import Denostories from "./Denostories.tsx";
+import { buildGroups } from "./buildGroups.tsx";
+import { Config, setConfig } from "./config.ts";
 
 import type { Plugin } from "$fresh/server.ts";
-import { buildGroups } from "./buildGroups.tsx";
-
-interface Options {
-  enabled: boolean;
-}
-
-const DEFAULT_OPTIONS: Options = {
-  enabled: true,
-};
 
 const decoder = new TextDecoder("utf-8");
 const contents = Deno.readFileSync(
@@ -19,21 +12,17 @@ const contents = Deno.readFileSync(
 );
 const cssText = decoder.decode(contents);
 
-export default function denostories(options?: Partial<Options>): Plugin {
-  buildGroups(true);
+export default function denostories(options?: Partial<Config>): Plugin {
+  const config = setConfig(options);
+  buildGroups(config, true);
 
-  const {
-    enabled,
-  } = {
-    ...DEFAULT_OPTIONS,
-    ...options,
-  };
+  const { enabled, route } = config;
 
   return {
     name: "denostories",
     routes: enabled
       ? [
-        { path: "stories/[...slug]", component: Denostories },
+        { path: `${route}/[...slug]`, component: Denostories },
       ]
       : undefined,
     islands: {

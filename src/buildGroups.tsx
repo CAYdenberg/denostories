@@ -2,17 +2,21 @@ import type { FunctionComponent } from "preact";
 import { expandGlob, kebabCase, path, sentenceCase } from "./deps.ts";
 
 import type { StoryGroup } from "./types.ts";
+import { Config } from "./config.ts";
 
 let cache: StoryGroup[] = [];
 
-export const buildGroups = async (refresh?: boolean): Promise<StoryGroup[]> => {
+export const buildGroups = async (
+  config: Config,
+  refresh?: boolean,
+): Promise<StoryGroup[]> => {
   let groups: StoryGroup[] = [];
 
   if (cache.length && !refresh) {
     return cache;
   }
 
-  for await (const file of expandGlob("**/*.stories.tsx")) {
+  for await (const file of expandGlob(config.match)) {
     if (!file.isFile) continue;
 
     const content = await import(`file://${file.path}`) as Record<
