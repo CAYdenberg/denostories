@@ -7,7 +7,10 @@ import type { Plugin } from "$fresh/server.ts";
 
 export default function denostories(options?: Partial<Config>): Plugin {
   const config = setConfig(options);
-  buildGroups(config, true);
+  const groups = buildGroups(config, true);
+  const storyIslands = groups.filter((group) => group.island).map((group) =>
+    group.island
+  );
 
   const { enabled, route } = config;
 

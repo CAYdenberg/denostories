@@ -10,4 +10,11 @@ export interface StoryGroup {
   title: string;
   slug: string;
   stories: Story[];
+  island: string | null;
+  Decorator?: FunctionComponent;
+}
+
+export interface StoryDefault {
+  isIsland?: boolean;
+  decorator?: FunctionComponent;
 }

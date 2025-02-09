@@ -7,3 +7,7 @@ export const TypeSubmit = () => {
     <Button type="submit" onClick={console.log}>This is a submit button</Button>
   );
 };
+
+export default {
+  isIsland: true,
+};
