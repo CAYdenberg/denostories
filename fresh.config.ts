@@ -1,10 +1,10 @@
 import { defineConfig } from "$fresh/server.ts";
 import tailwind from "$fresh/plugins/tailwind.ts";
-import denostory from "./src/plugin.ts";
+import denostories from "https://deno.land/x/denostories@v0.0.1";
 
 export default defineConfig({
   plugins: [
     tailwind(),
-    denostory({ enabled: !!Deno.env.get("ENABLE_STORIES") }),
+    denostories({ enabled: !!Deno.env.get("ENABLE_STORIES") }),
   ],
 });
