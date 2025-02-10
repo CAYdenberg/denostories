@@ -1,8 +1,6 @@
 {
-  "name": "@lps/denostories",
-  "version": "0.1.0",
-  "license": "MIT",
-  "exports": "./src/mod.ts",
+  "license": "MIT NON-AI",
+  "exports": "./mod.ts",
   "lock": false,
   "tasks": {
     "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
