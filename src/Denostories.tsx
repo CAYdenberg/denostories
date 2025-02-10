@@ -23,7 +23,9 @@ export default async function Denostories(_: Request, ctx: RouteContext) {
 
   return (
     <Layout groups={groups} topRoute={config.route}>
-      <Component />
+      <group.Decorator>
+        <Component />
+      </group.Decorator>
     </Layout>
   );
 }

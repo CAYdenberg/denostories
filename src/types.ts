@@ -11,7 +11,7 @@ export interface StoryGroup {
   slug: string;
   stories: Story[];
   island: string | null;
-  Decorator?: FunctionComponent;
+  Decorator: FunctionComponent;
 }
 
 export interface StoryDefault {
