@@ -1,3 +1,4 @@
+export default `
 html:has(.ds-layout),
 body:has(.ds-layout) {
   height: 100%;
@@ -92,3 +93,4 @@ body:has(.ds-layout) {
 .ds-storymenu__title {
   margin-left: 0.3em;
 }
+`;

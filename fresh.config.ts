@@ -1,6 +1,6 @@
 import { defineConfig } from "$fresh/server.ts";
 import tailwind from "$fresh/plugins/tailwind.ts";
-import denostories from "https://deno.land/x/denostories@v0.0.1";
+import denostories from "./mod.ts";
 
 export default defineConfig({
   plugins: [

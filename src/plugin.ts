@@ -1,16 +1,9 @@
-import { path } from "./deps.ts";
-
 import Denostories from "./Denostories.tsx";
 import { buildGroups } from "./buildGroups.tsx";
 import { Config, setConfig } from "./config.ts";
+import cssText from "./styles.css.ts";
 
 import type { Plugin } from "$fresh/server.ts";
-
-const decoder = new TextDecoder("utf-8");
-const contents = Deno.readFileSync(
-  path.join(path.dirname(path.fromFileUrl(import.meta.url)), "styles.css"),
-);
-const cssText = decoder.decode(contents);
 
 export default function denostories(options?: Partial<Config>): Plugin {
   const config = setConfig(options);
