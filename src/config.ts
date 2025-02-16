@@ -2,12 +2,16 @@ export interface Config {
   enabled: boolean;
   route: string;
   match: string;
+  runHeadlessChecks: boolean;
+  exitBuildOnFailedCheck: boolean;
 }
 
 const DEFAULT_CONFIG: Config = {
   enabled: true,
   route: "stories",
   match: "**/*.stories.tsx",
+  runHeadlessChecks: true,
+  exitBuildOnFailedCheck: true,
 };
 
 let config: Config;

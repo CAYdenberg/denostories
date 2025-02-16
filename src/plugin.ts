@@ -4,13 +4,16 @@ import { Config, setConfig } from "./config.ts";
 import cssText from "./styles.css.ts";
 
 import type { Plugin } from "$fresh/server.ts";
-import { report, runHeadless } from "./headless.tsx";
+import { getFailureFromAll } from "./headless.tsx";
+import { logFailure, logSuccess } from "./log.ts";
 
 export default function denostories(options?: Partial<Config>): Plugin {
   const config = setConfig(options);
   buildGroups(config, true).then((groups) => {
-    const errors = runHeadless(groups);
-    report(errors);
+    if (!config.runHeadlessChecks) return;
+    getFailureFromAll(groups)
+      ? logFailure("Denostories checks failed")
+      : logSuccess("Denostories checks successful");
   });
 
   const { enabled, route } = config;
@@ -38,6 +41,10 @@ export default function denostories(options?: Partial<Config>): Plugin {
           cssText,
         }],
       };
+    },
+    buildStart: async () => {
+      if (!config.exitBuildOnFailedCheck) return;
+      await buildGroups(config, true, true);
     },
   };
 }

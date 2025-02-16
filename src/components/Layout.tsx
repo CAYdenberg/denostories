@@ -6,10 +6,11 @@ import type { StoryGroupI } from "../types.ts";
 interface Props {
   groups: StoryGroupI[];
   topRoute: string;
+  isRunningChecks: boolean;
 }
 
 export const Layout: FunctionComponent<Props> = (
-  { children, groups, topRoute },
+  { children, groups, topRoute, isRunningChecks },
 ) => {
   return (
     <div class="ds-layout">
@@ -17,7 +18,11 @@ export const Layout: FunctionComponent<Props> = (
         {children}
       </main>
       <nav class="ds-layout__aside">
-        <Menu groups={groups} topRoute={topRoute} />
+        <Menu
+          groups={groups}
+          topRoute={topRoute}
+          isRunningChecks={isRunningChecks}
+        />
       </nav>
     </div>
   );

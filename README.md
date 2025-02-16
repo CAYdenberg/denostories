@@ -2,6 +2,8 @@
 
 A Storybook implementation for the [Fresh framework](https://fresh.deno.dev/). Heavily inspired by [Ladle](https://ladle.dev/).
 
+Denostories will also _automatically_ render each story and to give you live feedback and interrupt deploys when something goes wrong.
+
 ## Getting started
 
 ### 1. Add as a plugin.
@@ -48,6 +50,23 @@ export const IslandSubmit = () => {
 
 Just run `deno task start` and visit `http://localhost:8000/stories/` in your browser. **That's it!**
 
+## Headless Checks
+
+One thing to love about Fresh is that is that components are isomorphic by default, and can be seemlessly transitioned between browser and server environments.
+
+Denostories takes advantage of this by automatically checking your stories (for basic rendering). When all your stories are passing, you will see:
+
+```
+✓ Denostories checks successful
+```
+
+in your terminal.
+
+If a story fails, you'll see:
+- a notice in your terminal
+- an icon in the menu on the `/stories` page
+- during build, a full-fledged error and process exit
+
 ## Configuration
 
 - `enabled` (*default:* `true`). Unlike other storybook implementations, Denostories simply runs stories as an additional route in your existing app. This means you may want to disable it in production. An easy way to do this is via an environmental variable.
@@ -66,6 +85,8 @@ export default defineConfig({
 
 - `route` (*default*: `"stories"`). Top-level URL route at which stories will be served.
 - `match`  (*default*: `"**/*.stories.tsx"`) Glob pattern to search for stories.
+- `runHeadlessChecks` (*default*: `true`)
+- `exitBuildOnFailedCheck` (*default*: `true)
 
 ## Contributing
 

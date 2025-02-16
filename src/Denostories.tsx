@@ -22,7 +22,11 @@ export default async function Denostories(_: Request, ctx: RouteContext) {
   const Component: FunctionComponent | undefined = story.Component;
 
   return (
-    <Layout groups={groups} topRoute={config.route}>
+    <Layout
+      groups={groups}
+      topRoute={config.route}
+      isRunningChecks={config.runHeadlessChecks}
+    >
       <Component />
     </Layout>
   );

@@ -1,44 +1,44 @@
 import { renderToString } from "$fresh/src/server/deps.ts";
-import { StoryGroupI } from "./types.ts";
+import type { FunctionComponent } from "preact";
+import { HeadlessCheckResultI, StoryGroupI, StoryI } from "./types.ts";
 
-export const runHeadless = (groups: StoryGroupI[]) => {
-  return groups.reduce((acc, group) => [
-    ...acc,
-    ...group.stories.map((story) => {
-      try {
-        renderToString(<story.Component />);
-      } catch (e: Error | unknown) {
-        const message = e instanceof Error ? e.message : "(unknown error)";
-        return `${group.title}: ${story.title}: ${message}`;
-      }
-      return "";
-    }).filter(Boolean),
-  ], [] as string[]);
-};
-
-const reportSuccess = (msg: string) => {
-  console.log(
-    `%c\u2713 %c${msg}`,
-    "color: green",
-    "color: white",
-  );
-};
-
-const reportFailure = (msg: string) => {
-  console.log(
-    `%cX %c${msg}`,
-    "color: red; font-style: italic",
-    "color: white",
-  );
-};
-
-export const report = (errors: string[]) => {
-  if (!errors.length) {
-    reportSuccess("Denostories checks successful");
-    return;
+export const runChecks = (
+  Component: FunctionComponent,
+  dieOnFailure?: boolean,
+): HeadlessCheckResultI[] => {
+  let buildPassed = true;
+  let message: string = "";
+  try {
+    renderToString(<Component />);
+  } catch (e) {
+    if (dieOnFailure) throw e;
+    buildPassed = false;
+    message = (e as Error)?.message || "(Unknown build error)";
   }
+  return [
+    {
+      type: "build",
+      passed: buildPassed,
+      message,
+    },
+  ];
+};
 
-  errors.forEach((error) => {
-    reportFailure(error);
-  });
+export const getFailureFromStory = (
+  story: StoryI,
+): HeadlessCheckResultI | null =>
+  story.checks?.find((check) => !check.passed) || null;
+
+export const getFailureFromGroup = (
+  group: StoryGroupI,
+): HeadlessCheckResultI | null => {
+  const story = group.stories.find((story) => getFailureFromStory(story));
+  return story ? getFailureFromStory(story) : null;
+};
+
+export const getFailureFromAll = (
+  groups: StoryGroupI[],
+): HeadlessCheckResultI | null => {
+  const group = groups.find((group) => getFailureFromGroup(group));
+  return group ? getFailureFromGroup(group) : null;
 };

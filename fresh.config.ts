@@ -5,6 +5,8 @@ import denostories from "./mod.ts";
 export default defineConfig({
   plugins: [
     tailwind(),
-    denostories({ enabled: !!Deno.env.get("ENABLE_STORIES") }),
+    denostories({
+      enabled: !!Deno.env.get("ENABLE_STORIES"),
+    }),
   ],
 });

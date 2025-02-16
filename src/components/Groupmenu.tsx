@@ -4,15 +4,18 @@ import { StoryGroupI, StoryI } from "../types.ts";
 import { ChevronIcon, FileIcon } from "./icons.ts";
 
 import type { FunctionComponent } from "preact";
+import { HeadlessCheckResult } from "./HeadlessCheckResult.tsx";
+import { getFailureFromGroup, getFailureFromStory } from "../headless.tsx";
 
 interface Props {
   group: StoryGroupI;
   search: string;
   topRoute: string;
+  isRunningChecks: boolean;
 }
 
 export const GroupMenu: FunctionComponent<Props> = (
-  { group, search, topRoute },
+  { group, search, topRoute, isRunningChecks },
 ) => {
   const [isOpen, setIsOpen] = useState(true);
   const showOpen = isOpen || !!search;
@@ -38,7 +41,11 @@ export const GroupMenu: FunctionComponent<Props> = (
         aria-pressed={showOpen}
       >
         <ChevronIcon size={16} className="ds-groupmenu__indicator" />
-        <span>{group.title}</span>
+        <span className="ds-groupmenu__label">{group.title}</span>
+        <HeadlessCheckResult
+          show={isRunningChecks}
+          isFailure={!!getFailureFromGroup(group)}
+        />
       </button>
       <ul class="ds-storymenu" aria-expanded={showOpen}>
         {group.stories.map((story) =>
@@ -51,6 +58,10 @@ export const GroupMenu: FunctionComponent<Props> = (
                 >
                   <FileIcon size={16} />
                   <span class="ds-storymenu__title">{story.title}</span>
+                  <HeadlessCheckResult
+                    show={isRunningChecks}
+                    isFailure={!!getFailureFromStory(story)}
+                  />
                 </a>
               </li>
             )
