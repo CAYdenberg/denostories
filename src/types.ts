@@ -1,13 +1,13 @@
 import type { FunctionComponent } from "preact";
 
-export interface Story {
+export interface StoryI {
   title: string;
   slug: string;
   Component: FunctionComponent;
 }
 
-export interface StoryGroup {
+export interface StoryGroupI {
   title: string;
   slug: string;
-  stories: Story[];
+  stories: StoryI[];
 }

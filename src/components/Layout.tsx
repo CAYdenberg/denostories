@@ -1,10 +1,10 @@
 import { Menu } from "./Menu.tsx";
 
 import type { FunctionComponent } from "preact";
-import type { StoryGroup } from "../types.ts";
+import type { StoryGroupI } from "../types.ts";
 
 interface Props {
-  groups: StoryGroup[];
+  groups: StoryGroupI[];
   topRoute: string;
 }
 

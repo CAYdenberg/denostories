@@ -1,12 +1,12 @@
 import { useState } from "preact/hooks";
 
-import { Story, StoryGroup } from "../types.ts";
+import { StoryGroupI, StoryI } from "../types.ts";
 import { ChevronIcon, FileIcon } from "./icons.ts";
 
 import type { FunctionComponent } from "preact";
 
 interface Props {
-  group: StoryGroup;
+  group: StoryGroupI;
   search: string;
   topRoute: string;
 }
@@ -19,7 +19,7 @@ export const GroupMenu: FunctionComponent<Props> = (
 
   const allMatch = search &&
     group.title.toLowerCase().includes(search.toLowerCase());
-  const isMatch = (story: Story): boolean => {
+  const isMatch = (story: StoryI): boolean => {
     if (!search) return true;
     if (allMatch) return true;
     return story.title.toLowerCase().includes(search.toLowerCase());

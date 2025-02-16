@@ -1,16 +1,16 @@
 import type { FunctionComponent } from "preact";
 import { expandGlob, kebabCase, path, sentenceCase } from "./deps.ts";
 
-import type { StoryGroup } from "./types.ts";
+import type { StoryGroupI } from "./types.ts";
 import { Config } from "./config.ts";
 
-let cache: StoryGroup[] = [];
+let cache: StoryGroupI[] = [];
 
 export const buildGroups = async (
   config: Config,
   refresh?: boolean,
-): Promise<StoryGroup[]> => {
-  let groups: StoryGroup[] = [];
+): Promise<StoryGroupI[]> => {
+  let groups: StoryGroupI[] = [];
 
   if (cache.length && !refresh) {
     return cache;

@@ -3,11 +3,11 @@ import { GroupMenu } from "./Groupmenu.tsx";
 import { SearchIcon } from "./icons.ts";
 
 import type { FunctionComponent } from "preact";
-import type { StoryGroup } from "../types.ts";
+import type { StoryGroupI } from "../types.ts";
 
 interface Props {
   topRoute: string;
-  groups: StoryGroup[];
+  groups: StoryGroupI[];
 }
 
 export const Menu: FunctionComponent<Props> = ({ groups, topRoute }) => {
