@@ -65,6 +65,10 @@ body:has(.ds-layout) {
   transform: rotate(90deg);
 }
 
+.ds-groupmenu__label {
+  padding: 0 0.25rem;
+}
+
 /**
 ** StoryMenu
 */
@@ -82,6 +86,7 @@ body:has(.ds-layout) {
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding: 0 0.25rem;
 }
 
 .ds-storymenu__a {

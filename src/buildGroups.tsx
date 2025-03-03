@@ -1,16 +1,18 @@
 import type { FunctionComponent } from "preact";
 import { expandGlob, kebabCase, path, sentenceCase } from "./deps.ts";
 
-import type { StoryGroup } from "./types.ts";
+import type { StoryGroupI } from "./types.ts";
 import { Config } from "./config.ts";
+import { runChecks } from "./headless.tsx";
 
-let cache: StoryGroup[] = [];
+let cache: StoryGroupI[] = [];
 
 export const buildGroups = async (
   config: Config,
   refresh?: boolean,
-): Promise<StoryGroup[]> => {
-  let groups: StoryGroup[] = [];
+  dieOnFailure?: boolean,
+): Promise<StoryGroupI[]> => {
+  let groups: StoryGroupI[] = [];
 
   if (cache.length && !refresh) {
     return cache;
@@ -26,11 +28,15 @@ export const buildGroups = async (
 
     const stories = Object.keys(content).map((key) => {
       const _key = key as keyof typeof content;
+      const Component = content[_key];
 
       return {
         title: sentenceCase(_key),
         slug: kebabCase(_key),
-        Component: content[_key],
+        Component,
+        checks: config.runHeadlessChecks
+          ? runChecks(Component, dieOnFailure)
+          : undefined,
       };
     });
 
