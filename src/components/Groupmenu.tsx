@@ -5,7 +5,7 @@ import { ChevronIcon, FileIcon } from "./icons.ts";
 
 import type { FunctionComponent } from "preact";
 import { HeadlessCheckResult } from "./HeadlessCheckResult.tsx";
-import { getFailureFromGroup, getFailureFromStory } from "../headless.tsx";
+import { getFailureFromGroup, getFailureFromStory } from "../headless/utils.ts";
 
 interface Props {
   group: StoryGroupI;

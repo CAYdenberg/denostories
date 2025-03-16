@@ -28,6 +28,19 @@ body:has(.ds-layout) {
 }
 
 /**
+** In-story messages
+*/
+
+.ds-message {
+  color: red;
+  margin: 1rem;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 1rem;
+  background-color: hsla(0, 100%, 50%, 0.1);
+}
+
+/**
 ** Search
 */
 
@@ -96,6 +109,6 @@ body:has(.ds-layout) {
 }
 
 .ds-storymenu__title {
-  margin-left: 0.3em;
+  padding: 0 0.25em;
 }
 `;
