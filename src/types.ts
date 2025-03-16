@@ -1,5 +1,9 @@
 import type { FunctionComponent } from "preact";
 
+export interface Story extends FunctionComponent {
+  checkDataAttr?: Record<string, (value: string) => void>;
+}
+
 export interface StoryI {
   title: string;
   slug: string;
