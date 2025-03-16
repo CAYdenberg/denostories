@@ -1,9 +1,8 @@
-import type { FunctionComponent } from "preact";
 import { expandGlob, kebabCase, path, sentenceCase } from "./deps.ts";
 
-import type { StoryGroupI } from "./types.ts";
+import type { Story, StoryGroupI } from "./types.ts";
 import { Config } from "./config.ts";
-import { runChecks } from "./headless.tsx";
+import { runChecks } from "./headless/run.tsx";
 
 let cache: StoryGroupI[] = [];
 
@@ -23,7 +22,7 @@ export const buildGroups = async (
 
     const content = await import(`file://${file.path}`) as Record<
       string,
-      FunctionComponent
+      Story
     >;
 
     const stories = Object.keys(content).map((key) => {

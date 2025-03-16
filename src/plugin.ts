@@ -4,7 +4,7 @@ import { Config, setConfig } from "./config.ts";
 import cssText from "./styles.css.ts";
 
 import type { Plugin } from "$fresh/server.ts";
-import { getFailureFromAll } from "./headless.tsx";
+import { getFailureFromAll } from "./headless/index.ts";
 import { logFailure, logSuccess } from "./log.ts";
 
 export default function denostories(options?: Partial<Config>): Plugin {
