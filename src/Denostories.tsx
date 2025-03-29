@@ -1,6 +1,7 @@
 import { RouteContext } from "$fresh/server.ts";
 
 import { Layout } from "./components/Layout.tsx";
+import { HeadlessCheckMessages } from "./components/HeadlessCheckMessages.tsx";
 import { buildGroups } from "./buildGroups.tsx";
 import { getConfig } from "./config.ts";
 
@@ -20,6 +21,7 @@ export default async function Denostories(_: Request, ctx: RouteContext) {
     group.stories[0];
 
   const Component: FunctionComponent | undefined = story.Component;
+  const checkResults = story.checks;
 
   return (
     <Layout
@@ -27,6 +29,7 @@ export default async function Denostories(_: Request, ctx: RouteContext) {
       topRoute={config.route}
       isRunningChecks={config.runHeadlessChecks}
     >
+      <HeadlessCheckMessages results={checkResults} />
       <Component />
     </Layout>
   );
