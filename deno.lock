@@ -8,6 +8,7 @@
     "jsr:@fresh/core@2": "2.1.4",
     "jsr:@fresh/core@^2.1.4": "2.1.4",
     "jsr:@fresh/plugin-vite@^1.0.7": "1.0.7",
+    "jsr:@std/assert@^1.0.15": "1.0.15",
     "jsr:@std/bytes@^1.0.6": "1.0.6",
     "jsr:@std/dotenv@~0.225.5": "0.225.5",
     "jsr:@std/encoding@^1.0.10": "1.0.10",
@@ -17,6 +18,7 @@
     "jsr:@std/html@^1.0.5": "1.0.5",
     "jsr:@std/http@^1.0.21": "1.0.21",
     "jsr:@std/internal@^1.0.10": "1.0.12",
+    "jsr:@std/internal@^1.0.12": "1.0.12",
     "jsr:@std/internal@^1.0.9": "1.0.12",
     "jsr:@std/json@^1.0.2": "1.0.2",
     "jsr:@std/jsonc@^1.0.2": "1.0.2",
@@ -105,6 +107,12 @@
         "npm:@prefresh/vite",
         "npm:rollup",
         "npm:vite@^7.1.4"
+      ]
+    },
+    "@std/assert@1.0.15": {
+      "integrity": "d64018e951dbdfab9777335ecdb000c0b4e3df036984083be219ce5941e4703b",
+      "dependencies": [
+        "jsr:@std/internal@^1.0.12"
       ]
     },
     "@std/bytes@1.0.6": {
@@ -1307,6 +1315,7 @@
     "dependencies": [
       "jsr:@fresh/core@^2.1.4",
       "jsr:@fresh/plugin-vite@^1.0.7",
+      "jsr:@std/assert@^1.0.15",
       "jsr:@std/fs@^1.0.19",
       "jsr:@wok/case@^1.0.2",
       "npm:@preact/signals@^2.3.2",

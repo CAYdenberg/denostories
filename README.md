@@ -1,17 +1,25 @@
-# Fresh project
+# Denostories
 
-Your new Fresh project is ready to go. You can follow the Fresh "Getting
-Started" guide here: https://fresh.deno.dev/docs/getting-started
+A Storybook implementation for the [Fresh framework](https://fresh.deno.dev/). Heavily inspired by [Ladle](https://ladle.dev/).
 
-### Usage
+Denostories will also _automatically_ render each story to give you live feedback and interrupt deploys when something goes wrong.
 
-Make sure to install Deno:
-https://docs.deno.com/runtime/getting_started/installation
+## Getting started
 
-Then start the project in development mode:
+1. Add Denostories to your project
 
-```
-deno task dev
-```
+1. Inject storybook routes
 
-This will watch the project directory and restart as necessary.
+1. Add headless checks to your build process
+
+1. Create a story!
+
+## API
+
+### Stories
+
+### injectStorybook
+
+### headless
+
+### Config

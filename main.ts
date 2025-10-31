@@ -27,7 +27,7 @@ const exampleLoggerMiddleware = define.middleware((ctx) => {
 });
 app.use(exampleLoggerMiddleware);
 
-injectDenostories(app);
+injectDenostories(app, { runHeadlessChecks: false });
 
 // Include file-system based routes here
 app.fsRoutes();

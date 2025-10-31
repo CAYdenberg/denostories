@@ -20,7 +20,7 @@ export const buildGroups = async (
   for await (const file of expandGlob(config.match)) {
     if (!file.isFile) continue;
 
-    const content = await import(`file://${file.path}`) as Record<
+    const content = await import(/* @vite-ignore */ file.path) as Record<
       string,
       Story
     >;
@@ -33,9 +33,8 @@ export const buildGroups = async (
         title: sentenceCase(_key),
         slug: kebabCase(_key),
         Component,
-        checks: config.runHeadlessChecks
-          ? runChecks(Component, dieOnFailure)
-          : undefined,
+        // @TODO: put headless checks back in
+        checks: undefined,
       };
     });
 

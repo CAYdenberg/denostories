@@ -15,6 +15,7 @@
   "exclude": ["**/_fresh/*"],
   "imports": {
     "@/": "./",
+    "@std/assert": "jsr:@std/assert@^1.0.15",
     "@std/fs": "jsr:@std/fs@^1.0.19",
     "@wok/case": "jsr:@wok/case@^1.0.2",
     "fresh": "jsr:@fresh/core@^2.1.4",
