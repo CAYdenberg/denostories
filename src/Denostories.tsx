@@ -1,21 +1,20 @@
-import { RouteContext } from "$fresh/server.ts";
-
 import { Layout } from "./components/Layout.tsx";
 import { HeadlessCheckMessages } from "./components/HeadlessCheckMessages.tsx";
-import { buildGroups } from "./buildGroups.tsx";
-import { getConfig } from "./config.ts";
 
+import type { Config } from "./config.ts";
 import type { FunctionComponent } from "preact";
+import type { StoryGroupI } from "./types.ts";
 
-export default async function Denostories(_: Request, ctx: RouteContext) {
-  const config = getConfig();
+interface Props {
+  groups: StoryGroupI[];
+  groupSlug: string;
+  storySlug: string;
+  config: Config;
+}
 
-  const groups = await buildGroups(config);
-
-  const slugs = ctx.params.slug.split("/");
-  const groupSlug = slugs[0] || "";
-  const storySlug = slugs[1] || "";
-
+const Denostories: FunctionComponent<Props> = (
+  { groups, groupSlug, storySlug, config },
+) => {
   const group = groups.find((g) => g.slug === groupSlug) || groups[0];
   const story = group.stories.find((s) => s.slug === storySlug) ||
     group.stories[0];
@@ -33,4 +32,6 @@ export default async function Denostories(_: Request, ctx: RouteContext) {
       <Component />
     </Layout>
   );
-}
+};
+
+export default Denostories;

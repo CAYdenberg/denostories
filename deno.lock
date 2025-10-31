@@ -17,6 +17,7 @@
     "jsr:@std/html@^1.0.5": "1.0.5",
     "jsr:@std/http@^1.0.21": "1.0.21",
     "jsr:@std/internal@^1.0.10": "1.0.12",
+    "jsr:@std/internal@^1.0.9": "1.0.12",
     "jsr:@std/json@^1.0.2": "1.0.2",
     "jsr:@std/jsonc@^1.0.2": "1.0.2",
     "jsr:@std/media-types@^1.1.0": "1.1.0",
@@ -25,6 +26,7 @@
     "jsr:@std/path@^1.1.2": "1.1.2",
     "jsr:@std/semver@^1.0.6": "1.0.6",
     "jsr:@std/uuid@^1.0.9": "1.0.9",
+    "jsr:@wok/case@^1.0.2": "1.0.2",
     "npm:@babel/core@^7.28.0": "7.28.5",
     "npm:@babel/preset-react@^7.27.1": "7.28.5_@babel+core@7.28.5",
     "npm:@mjackson/node-fetch-server@0.7": "0.7.0",
@@ -37,6 +39,7 @@
     "npm:esbuild-wasm@~0.25.11": "0.25.11",
     "npm:esbuild@0.25.7": "0.25.7",
     "npm:esbuild@~0.25.5": "0.25.11",
+    "npm:lucide-preact@0.552": "0.552.0_preact@10.27.2",
     "npm:preact-render-to-string@^6.6.3": "6.6.3_preact@10.27.2",
     "npm:preact@^10.27.0": "10.27.2",
     "npm:preact@^10.27.2": "10.27.2",
@@ -119,6 +122,7 @@
     "@std/fs@1.0.19": {
       "integrity": "051968c2b1eae4d2ea9f79a08a3845740ef6af10356aff43d3e2ef11ed09fb06",
       "dependencies": [
+        "jsr:@std/internal@^1.0.9",
         "jsr:@std/path@^1.1.1"
       ]
     },
@@ -149,7 +153,7 @@
     "@std/path@1.1.2": {
       "integrity": "c0b13b97dfe06546d5e16bf3966b1cadf92e1cc83e56ba5476ad8b498d9e3038",
       "dependencies": [
-        "jsr:@std/internal"
+        "jsr:@std/internal@^1.0.10"
       ]
     },
     "@std/semver@1.0.6": {
@@ -160,6 +164,9 @@
       "dependencies": [
         "jsr:@std/bytes"
       ]
+    },
+    "@wok/case@1.0.2": {
+      "integrity": "5d7c4da6ac87a372d603c6ab6fb0e07ec74d4a712c3cb9051961a0892b1f3090"
     }
   },
   "npm": {
@@ -1146,6 +1153,12 @@
         "yallist"
       ]
     },
+    "lucide-preact@0.552.0_preact@10.27.2": {
+      "integrity": "sha512-r+r8yePtakKLRVQKYTI48lbjj9m2qxctVmLaJ/hcNi881aobs5amZ3OOdj3MJbotCKo8JzX17KTo2ZTiim1nEA==",
+      "dependencies": [
+        "preact"
+      ]
+    },
     "magic-string@0.30.21": {
       "integrity": "sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==",
       "dependencies": [
@@ -1294,8 +1307,12 @@
     "dependencies": [
       "jsr:@fresh/core@^2.1.4",
       "jsr:@fresh/plugin-vite@^1.0.7",
+      "jsr:@std/fs@^1.0.19",
+      "jsr:@wok/case@^1.0.2",
       "npm:@preact/signals@^2.3.2",
       "npm:@tailwindcss/vite@^4.1.12",
+      "npm:lucide-preact@0.552",
+      "npm:preact-render-to-string@^6.6.3",
       "npm:preact@^10.27.2",
       "npm:tailwindcss@^4.1.10",
       "npm:vite@^7.1.3"

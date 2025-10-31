@@ -1,6 +1,6 @@
 import { DOMParser, HTMLDocument } from "../deps.ts";
 
-import { renderToString } from "$fresh/src/server/deps.ts";
+import { renderToString } from "preact-render-to-string";
 import { HeadlessCheckResultI, HeadlessCheckType, Story } from "../types.ts";
 
 export const runChecks = (
