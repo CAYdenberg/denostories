@@ -1,6 +1,6 @@
 import { App, staticFiles } from "fresh";
 import { define, type State } from "./utils.ts";
-import injectDenostories from "./mod.ts";
+import denostories from "./mod.ts";
 
 export const app = new App<State>();
 
@@ -27,7 +27,7 @@ const exampleLoggerMiddleware = define.middleware((ctx) => {
 });
 app.use(exampleLoggerMiddleware);
 
-injectDenostories(app, { runHeadlessChecks: false });
+app.use(denostories());
 
 // Include file-system based routes here
 app.fsRoutes();

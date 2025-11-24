@@ -33,8 +33,7 @@ export const buildGroups = async (
         title: sentenceCase(_key),
         slug: kebabCase(_key),
         Component,
-        // @TODO: put headless checks back in
-        checks: undefined,
+        checks: runChecks(Component, dieOnFailure),
       };
     });
 

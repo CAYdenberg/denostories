@@ -1,6 +1,5 @@
 import type { FunctionComponent } from "preact";
 import type { HeadlessCheckResultI } from "../types.ts";
-import { Fragment } from "preact";
 
 interface Props {
   results?: HeadlessCheckResultI[];

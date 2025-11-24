@@ -1,4 +1,4 @@
-import { DOMParser, HTMLDocument } from "../deps.ts";
+import { DOMParser, type HTMLDocument } from '@b-fuze/deno-dom/native';
 
 import { renderToString } from "preact-render-to-string";
 import { HeadlessCheckResultI, HeadlessCheckType, Story } from "../types.ts";
