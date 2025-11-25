@@ -1,7 +1,7 @@
 import { useSignal } from "@preact/signals";
 import { Head } from "fresh/runtime";
 import { define } from "../utils.ts";
-import Menu from "../islands/Menu.tsx";
+import Counter from "../islands/Counter.tsx";
 
 export default define.page(function Home(ctx) {
   const count = useSignal(3);
@@ -26,7 +26,7 @@ export default define.page(function Home(ctx) {
           Try updating this message in the
           <code class="mx-2">./routes/index.tsx</code> file, and refresh.
         </p>
-        <Menu />
+        <Counter count={count} />
       </div>
     </div>
   );
