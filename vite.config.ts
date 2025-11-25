@@ -4,7 +4,9 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [
-    fresh(),
+    fresh({
+      islandSpecifiers: ["@/src/components/Menu.tsx"],
+    }),
     tailwindcss(),
   ],
 });
