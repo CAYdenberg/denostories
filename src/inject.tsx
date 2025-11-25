@@ -18,10 +18,11 @@ const injectDenostories = <T,>(options?: Partial<Config>): Middleware<T> => {
     const groupSlug = slugs[0] || "";
     const storySlug = slugs[1] || "";
 
-    const groups = await buildGroups(config);
+    const { groups, components } = await buildGroups(config);
 
     return ctx.render(
       <Denostories
+        components={components}
         config={config}
         groups={groups}
         groupSlug={groupSlug}
@@ -32,4 +33,3 @@ const injectDenostories = <T,>(options?: Partial<Config>): Middleware<T> => {
 };
 
 export default injectDenostories;
-

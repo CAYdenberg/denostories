@@ -1,5 +1,4 @@
 import { FunctionComponent } from "preact";
-import { FailureIcon, SuccessIcon } from "./icons.ts";
 
 interface Props {
   show: boolean;
@@ -11,7 +10,5 @@ export const HeadlessCheckResult: FunctionComponent<Props> = (
 ) => {
   if (!show) return null;
 
-  return isFailure
-    ? <FailureIcon color="red" size={16} />
-    : <SuccessIcon color="green" size={16} />;
+  return isFailure ? "failure" : "success";
 };

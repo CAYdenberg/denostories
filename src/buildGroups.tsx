@@ -3,17 +3,24 @@ import { expandGlob, kebabCase, path, sentenceCase } from "./deps.ts";
 import type { Story, StoryGroupI } from "./types.ts";
 import { Config } from "./config.ts";
 import { runChecks } from "./headless/run.tsx";
+import { FunctionComponent } from "preact";
 
-let cache: StoryGroupI[] = [];
+let cache: {
+  groups: StoryGroupI[];
+  components: Record<string, FunctionComponent>;
+};
 
 export const buildGroups = async (
   config: Config,
   refresh?: boolean,
   dieOnFailure?: boolean,
-): Promise<StoryGroupI[]> => {
+): Promise<
+  { groups: StoryGroupI[]; components: Record<string, FunctionComponent> }
+> => {
   let groups: StoryGroupI[] = [];
+  let components: Record<string, FunctionComponent> = {};
 
-  if (cache.length && !refresh) {
+  if (cache && !refresh) {
     return cache;
   }
 
@@ -25,19 +32,22 @@ export const buildGroups = async (
       Story
     >;
 
+    const base = path.basename(file.name, ".stories.tsx");
+
     const stories = Object.keys(content).map((key) => {
       const _key = key as keyof typeof content;
       const Component = content[_key];
+      components = {
+        ...components,
+        [`${kebabCase(base)}/${kebabCase(_key)}`]: Component,
+      };
 
       return {
         title: sentenceCase(_key),
         slug: kebabCase(_key),
-        Component,
         checks: runChecks(Component, dieOnFailure),
       };
     });
-
-    const base = path.basename(file.name, ".stories.tsx");
 
     groups = [...groups, {
       title: sentenceCase(base),
@@ -46,6 +56,7 @@ export const buildGroups = async (
     }];
   }
 
-  cache = groups;
-  return groups;
+  cache = { groups, components };
+
+  return { groups, components };
 };

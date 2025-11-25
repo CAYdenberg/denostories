@@ -1,3 +1,4 @@
+import { Fragment } from "preact";
 import type { FunctionComponent } from "preact";
 import type { HeadlessCheckResultI } from "../types.ts";
 

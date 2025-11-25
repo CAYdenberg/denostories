@@ -7,7 +7,6 @@ export interface Story extends FunctionComponent {
 export interface StoryI {
   title: string;
   slug: string;
-  Component: FunctionComponent;
   checks?: Array<HeadlessCheckResultI>;
 }
 
