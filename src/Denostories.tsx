@@ -1,3 +1,5 @@
+// deno-lint-ignore-file react-no-danger
+
 import styles from "./styles.css.ts";
 
 import { Layout } from "./components/Layout.tsx";
@@ -32,7 +34,7 @@ const Denostories: FunctionComponent<Props> = (
 
   return (
     <Fragment>
-      <style>{styles}</style>
+      <style dangerouslySetInnerHTML={{ __html: styles }} />
       <Layout
         groups={groups}
         topRoute={config.route}
