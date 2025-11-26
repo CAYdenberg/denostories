@@ -40,14 +40,12 @@ export const GroupMenu: FunctionComponent<Props> = (
         onClick={() => setIsOpen((init) => !init)}
         aria-pressed={showOpen}
       >
-        {/* <ChevronIcon size={16} className="ds-groupmenu__indicator" /> */}
+        <ChevronIcon size={16} className="ds-groupmenu__indicator" />
         <span className="ds-groupmenu__label">{group.title}</span>
-        {
-          /* <HeadlessCheckResult
+        <HeadlessCheckResult
           show={isRunningChecks}
           isFailure={!!getFailureFromGroup(group)}
-        /> */
-        }
+        />
       </button>
       <ul class="ds-storymenu" aria-expanded={showOpen}>
         {group.stories.map((story) =>
@@ -58,14 +56,12 @@ export const GroupMenu: FunctionComponent<Props> = (
                   href={`/${topRoute}/${group.slug}/${story.slug}`}
                   class="ds-storymenu__a"
                 >
-                  {/* <FileIcon size={16} /> */}
+                  <FileIcon size={16} />
                   <span class="ds-storymenu__title">{story.title}</span>
-                  {
-                    /* <HeadlessCheckResult
+                  <HeadlessCheckResult
                     show={isRunningChecks}
                     isFailure={!!getFailureFromStory(story)}
-                  /> */
-                  }
+                  />
                 </a>
               </li>
             )

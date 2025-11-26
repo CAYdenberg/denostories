@@ -3,6 +3,7 @@ import { GroupMenu } from "./Groupmenu.tsx";
 
 import type { FunctionComponent } from "preact";
 import type { StoryGroupI } from "../types.ts";
+import { SearchIcon } from "./icons.ts";
 
 export interface MenuProps {
   topRoute: string;
@@ -22,6 +23,7 @@ export const Menu: FunctionComponent<MenuProps> = (
   return (
     <>
       <div class="ds-search">
+        <SearchIcon className="ds-search__icon" color="#276ef1" />
         <input
           type="search"
           class="ds-search__input"

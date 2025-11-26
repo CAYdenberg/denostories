@@ -46,6 +46,7 @@
     "npm:esbuild-wasm@~0.25.11": "0.25.12",
     "npm:esbuild@0.25.7": "0.25.7",
     "npm:esbuild@~0.25.5": "0.25.7",
+    "npm:lucide-preact@*": "0.554.0_preact@10.27.2",
     "npm:preact-render-to-string@^6.6.3": "6.6.3_preact@10.27.2",
     "npm:preact@^10.27.0": "10.27.2",
     "npm:preact@^10.27.2": "10.27.2",
@@ -996,6 +997,12 @@
         "yallist"
       ]
     },
+    "lucide-preact@0.554.0_preact@10.27.2": {
+      "integrity": "sha512-+d6euadQLdgeUyoHYDYdFi4jTfAD7G+S5vE03I2PxeETek0R+G4Z3eS8/X77EAf+2Nfzx3iLS8sAR3Jt9zzxMQ==",
+      "dependencies": [
+        "preact"
+      ]
+    },
     "magic-string@0.30.21": {
       "integrity": "sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==",
       "dependencies": [
@@ -1124,6 +1131,15 @@
     "yallist@3.1.1": {
       "integrity": "sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g=="
     }
+  },
+  "redirects": {
+    "https://esm.sh/preact@^10.5.13?target=denonext": "https://esm.sh/preact@10.27.2?target=denonext"
+  },
+  "remote": {
+    "https://esm.sh/lucide-preact@0.299.0/?exports=Search,File,ChevronRight,ShieldAlert,CheckCheck": "f06c156f3da29055aa57f7e1b78beeeaf0850296d47a6652972926c76774c3df",
+    "https://esm.sh/lucide-preact@0.299.0/denonext/lucide-preact.mjs?exports=CheckCheck,ChevronRight,File,Search,ShieldAlert": "59e155ee404dee4306f2126c2456016d7c4f1e11f2dbb15ffc2d0d52dca3aa60",
+    "https://esm.sh/preact@10.27.2/denonext/preact.mjs": "9bdadca1e1a6732eab00de7e38cb26c08ec277fa2dddbfb2d5259e54b15450bb",
+    "https://esm.sh/preact@10.27.2?target=denonext": "3aff415ce76d0d09dcaa5b51e636f7309ae3cb8faae26ef2177ab433b8834701"
   },
   "workspace": {
     "dependencies": [
