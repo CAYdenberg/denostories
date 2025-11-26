@@ -1,7 +1,3 @@
-// deno-lint-ignore-file react-no-danger
-
-import styles from "./styles.css.ts";
-
 import { Layout } from "./components/Layout.tsx";
 import { HeadlessCheckMessages } from "./components/HeadlessCheckMessages.tsx";
 
@@ -12,6 +8,7 @@ import // @ts-types="preact"
   type FunctionComponent,
 } from "preact";
 import type { StoryGroupI } from "./types.ts";
+import { Head } from "fresh/runtime";
 
 interface Props {
   components: Record<string, FunctionComponent>;
@@ -34,7 +31,9 @@ const Denostories: FunctionComponent<Props> = (
 
   return (
     <Fragment>
-      <style dangerouslySetInnerHTML={{ __html: styles }} />
+      <Head>
+        <link href="@/src/styles.css" />
+      </Head>
       <Layout
         groups={groups}
         topRoute={config.route}

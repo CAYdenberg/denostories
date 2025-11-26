@@ -1,4 +1,5 @@
-export default `
+@import "tailwindcss";
+
 html:has(.ds-layout),
 body:has(.ds-layout) {
   height: 100%;
@@ -111,4 +112,3 @@ body:has(.ds-layout) {
 .ds-storymenu__title {
   padding: 0 0.25em;
 }
-`;

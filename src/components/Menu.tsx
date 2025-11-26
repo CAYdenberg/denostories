@@ -4,13 +4,13 @@ import { GroupMenu } from "./Groupmenu.tsx";
 import type { FunctionComponent } from "preact";
 import type { StoryGroupI } from "../types.ts";
 
-interface Props {
+export interface MenuProps {
   topRoute: string;
   groups: StoryGroupI[];
   isRunningChecks: boolean;
 }
 
-export const Menu: FunctionComponent<Props> = (
+export const Menu: FunctionComponent<MenuProps> = (
   { groups, topRoute, isRunningChecks },
 ) => {
   const [search, setSearch] = useState("");
