@@ -5,9 +5,7 @@ interface Story extends FunctionComponent {
 }
 
 export const BasicError: Story = () => {
-  // throw new Error("This will fail");
-
-  return <h1>This component will error</h1>;
+  throw new Error("This will fail");
 };
 
 BasicError.foo = "bar";
