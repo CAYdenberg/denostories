@@ -9,6 +9,7 @@ import // @ts-types="preact"
 } from "preact";
 import type { StoryGroupI } from "./types.ts";
 import { Head } from "fresh/runtime";
+import { RenderedComponentMessage } from "./components/RenderedComponentMessage.tsx";
 
 interface Props {
   components: Record<string, FunctionComponent>;
@@ -40,7 +41,9 @@ const Denostories: FunctionComponent<Props> = (
         isRunningChecks={config.runHeadlessChecks}
       >
         <HeadlessCheckMessages results={checkResults} />
-        <Component />
+        <RenderedComponentMessage storyTitle={story.title}>
+          <Component />
+        </RenderedComponentMessage>
       </Layout>
     </Fragment>
   );
