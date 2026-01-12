@@ -1,14 +1,11 @@
+import "./styles.css";
+
 import { Layout } from "./components/Layout.tsx";
 import { HeadlessCheckMessages } from "./components/HeadlessCheckMessages.tsx";
 
 import type { Config } from "./config.ts";
-import // @ts-types="preact"
-{ // @ts-types="preact"
-  Fragment, // @ts-types="preact"
-  type FunctionComponent,
-} from "preact";
+import { Fragment, type FunctionComponent } from "preact";
 import type { StoryGroupI } from "./types.ts";
-import { Head } from "fresh/runtime";
 
 interface Props {
   components: Record<string, FunctionComponent>;
@@ -31,9 +28,6 @@ const Denostories: FunctionComponent<Props> = (
 
   return (
     <Fragment>
-      <Head>
-        <link href="@/src/styles.css" />
-      </Head>
       <Layout
         groups={groups}
         topRoute={config.route}

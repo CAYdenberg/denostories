@@ -1,8 +1,8 @@
-@import "tailwindcss";
-
 html:has(.ds-layout),
 body:has(.ds-layout) {
   height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 /*
@@ -57,19 +57,32 @@ body:has(.ds-layout) {
 }
 
 .ds-search__input {
-  padding: 0.2em 0.3em 0.2em 2em;
+  padding: 0.4em 0.3em 0.4em 2em;
   outline-color: #276ef1;
   background-color: white;
+  width: 100%;
+  display: block;
 }
 
 /**
 ** GroupMenu
 */
 
+.ds-menu,
+.ds-storymenu {
+  list-style-type: none;
+  padding-left: 0;
+}
+
 .ds-groupmenu__title {
   display: flex;
   flex-direction: row;
   align-items: center;
+  border: none;
+  background: none;
+  font-size: 16px;
+  margin-top: 0.4em;
+  cursor: pointer;
 }
 
 .ds-groupmenu__indicator {
@@ -101,13 +114,14 @@ body:has(.ds-layout) {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 0 0.25rem;
 }
 
 .ds-storymenu__a {
   display: flex;
   flex-direction: row;
   align-items: center;
+  text-decoration: none;
+  font-size: 16px;
 }
 
 .ds-storymenu__title {
