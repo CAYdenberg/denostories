@@ -4,6 +4,7 @@ export interface Config {
   match: string;
   runHeadlessChecks: boolean;
   exitBuildOnFailedCheck: boolean;
+  log: boolean;
 }
 
 const DEFAULT_CONFIG: Config = {
@@ -11,7 +12,8 @@ const DEFAULT_CONFIG: Config = {
   route: "stories",
   match: "**/*.stories.tsx",
   runHeadlessChecks: true,
-  exitBuildOnFailedCheck: true,
+  log: true,
+  exitBuildOnFailedCheck: false,
 };
 
 let config: Config;

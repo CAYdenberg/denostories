@@ -1,5 +1,3 @@
-@import "tailwindcss";
-
 html:has(.ds-layout),
 body:has(.ds-layout) {
   height: 100%;
