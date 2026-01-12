@@ -1,5 +1,10 @@
 # Denostories
 
+---
+**Note:** For Fresh 1.0, use Denostories 0.3.0. I am working out how to publish 
+a version for Fresh 2.0.
+---
+
 A Storybook implementation for the [Fresh framework](https://fresh.deno.dev/). Heavily inspired by [Ladle](https://ladle.dev/).
 
 Denostories will also _automatically_ render each story and to give you live feedback and interrupt deploys when something goes wrong.
