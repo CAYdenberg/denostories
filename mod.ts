@@ -1,4 +1,4 @@
-import injectDenostories from "./src/inject.tsx";
+import injectDenostories from "./src/middleware.tsx";
 
 export default injectDenostories;
 
