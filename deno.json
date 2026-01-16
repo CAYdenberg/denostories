@@ -1,4 +1,21 @@
 {
+  "name": "@lps/denostories",
+  "version": "fresh2-alpha1",
+  "publish": {
+    "include": ["mod.ts", "src/", "README.md"],
+    "exclude": [
+      "_fresh/",
+      "__stories__/",
+      "routes/",
+      "vite.config.ts",
+      "components/",
+      "islands/",
+      "assets/"
+    ]
+  },
+  "exports": {
+    ".": "./mod.ts"
+  },
   "nodeModulesDir": "manual",
   "tasks": {
     "check": "deno fmt --check . && deno lint . && deno check",
