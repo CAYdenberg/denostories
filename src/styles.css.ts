@@ -1,4 +1,4 @@
-html:has(.ds-layout),
+export default `html:has(.ds-layout),
 body:has(.ds-layout) {
   height: 100%;
   margin: 0;
@@ -89,7 +89,7 @@ body:has(.ds-layout) {
   transition: ease-in-out 0.1s transform;
 }
 
-.ds-groupmenu__title[aria-pressed="true"] > .ds-groupmenu__indicator {
+.ds-groupmenu__title[aria-pressed=\"true\"] > .ds-groupmenu__indicator {
   transform: rotate(90deg);
 }
 
@@ -110,7 +110,7 @@ body:has(.ds-layout) {
   display: block;
 }
 
-.ds-groupmenu__title[aria-pressed="true"] .ds-storymenu__a {
+.ds-groupmenu__title[aria-pressed=\"true\"] .ds-storymenu__a {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -127,3 +127,4 @@ body:has(.ds-layout) {
 .ds-storymenu__title {
   padding: 0 0.25em;
 }
+`;
