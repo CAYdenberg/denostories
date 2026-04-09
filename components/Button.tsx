@@ -1,5 +1,7 @@
 import type { // @ts-types="preact"
-ButtonHTMLAttributes, ComponentChildren } from "preact";
+  ButtonHTMLAttributes,
+  ComponentChildren,
+} from "preact";
 
 export interface ButtonProps extends ButtonHTMLAttributes {
   id?: string;

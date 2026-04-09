@@ -1,8 +1,10 @@
 # Denostories
 
-A Storybook implementation for the [Fresh framework](https://fresh.deno.dev/). Heavily inspired by [Ladle](https://ladle.dev/).
+A Storybook implementation for the [Fresh framework](https://fresh.deno.dev/).
+Heavily inspired by [Ladle](https://ladle.dev/).
 
-Denostories will also _automatically_ render each story to give you live feedback and interrupt deploys when something goes wrong.
+Denostories will also _automatically_ render each story to give you live
+feedback and interrupt deploys when something goes wrong.
 
 ## Getting started
 

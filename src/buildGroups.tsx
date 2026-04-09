@@ -1,10 +1,15 @@
-import { expandGlob, kebabCase, path, sentenceCase } from "./deps.ts";
+import {
+  expandGlob,
+  kebabCase,
+  path,
+  sentenceCase,
+  type WalkEntry,
+} from "./deps.ts";
 
 import type { Story, StoryGroupI } from "./types.ts";
 import { Config } from "./config.ts";
 import { runChecks } from "./headless/run.tsx";
 import { FunctionComponent } from "preact";
-import { WalkEntry } from "@std/fs/walk";
 import { getFailureFromAll } from "./headless/utils.ts";
 import { logFailure, logSuccess } from "./log.ts";
 

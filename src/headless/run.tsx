@@ -1,6 +1,4 @@
-import { DOMParser, type HTMLDocument } from '@b-fuze/deno-dom/native';
-
-import { renderToString } from "preact-render-to-string";
+import { DOMParser, type HTMLDocument, renderToString } from "../deps.ts";
 import { HeadlessCheckResultI, HeadlessCheckType, Story } from "../types.ts";
 
 export const runChecks = (
